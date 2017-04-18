@@ -11,7 +11,7 @@ out vec2 textureCoord;
 
 void main () {
     gl_Position = vec4(position, 1.f);
-    textureCoord = vec2(texCoord.x, 1.f - texCoord.y) * 2;
+    textureCoord = vec2(texCoord.x, 1.f - texCoord.y);
     
     //Wavey color visual test
     vertexColor = vec4(abs(sin(time + color.x)), abs(sin(time + color.y)), abs(sin(time + color.z)), 1.f) * vec4(texCoord.x, texCoord.y, abs(sin(time*2.5f)), 1.f);

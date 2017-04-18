@@ -88,7 +88,7 @@ int main(int argc, const char * argv[]) {
     glClearColor(0.f, 0.f, 0.f, 1.f);
     
     //Load default shader
-    Shader defaultShader ("./Resources/default.vert", "./Resources/default.frag");
+    Shader defaultShader ("./Resources/Shaders/default.vert", "./Resources/Shaders/default.frag");
     
     //Basic plane
     GLfloat vertices[] = {
@@ -163,8 +163,9 @@ int main(int argc, const char * argv[]) {
         std::cout << "Failed to find time" << std::endl;
     }
     
-    //Load Wall Texture
-    Texture wallTex ("Resources/wall.jpg");
+    //Load Textures
+    Texture wallTex ("Resources/Images/wall.jpg");
+    Texture refTex ("Resources/Images/refTexture.png");
     
     //Main Loop
     while (!glfwWindowShouldClose(window)) {
@@ -186,6 +187,7 @@ int main(int argc, const char * argv[]) {
         
         //Draw plane
         wallTex.Use(defaultShader.Program, "texture0", GL_TEXTURE0, 0);
+        refTex.Use(defaultShader.Program, "texture1", GL_TEXTURE1, 1);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
