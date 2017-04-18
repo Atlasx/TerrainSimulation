@@ -7,24 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B65B4CD11EA683DB00740DED /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65B4CCF1EA683DB00740DED /* Texture.cpp */; };
+		B67297F21E9EA4B200B06A40 /* SimpleTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B67297F01E9EA4B200B06A40 /* SimpleTime.cpp */; };
+		B67297F41E9EFE1500B06A40 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B67297F31E9EFE1500B06A40 /* libassimp.3.3.1.dylib */; };
 		B68916001E9D524300957995 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B68915FF1E9D524300957995 /* main.cpp */; };
+		B68916081E9D527400957995 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68916071E9D527400957995 /* OpenGL.framework */; };
+		B689160A1E9D529F00957995 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B68916091E9D529F00957995 /* libglfw.3.3.dylib */; };
+		B689160C1E9D530300957995 /* libSOIL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B689160B1E9D530300957995 /* libSOIL.dylib */; };
+		B689160E1E9D532300957995 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B689160D1E9D532300957995 /* libGLEW.2.0.0.dylib */; };
+		B68916101E9D535100957995 /* Resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = B689160F1E9D534500957995 /* Resources */; };
+		B68916131E9D575500957995 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B68916111E9D575500957995 /* Shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B68915FA1E9D524300957995 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
 			files = (
+				B68916101E9D535100957995 /* Resources in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B65B4CCF1EA683DB00740DED /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		B65B4CD01EA683DB00740DED /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		B67297F01E9EA4B200B06A40 /* SimpleTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleTime.cpp; sourceTree = "<group>"; };
+		B67297F11E9EA4B200B06A40 /* SimpleTime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SimpleTime.hpp; sourceTree = "<group>"; };
+		B67297F31E9EFE1500B06A40 /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		B68915FC1E9D524300957995 /* TerrainProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TerrainProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68915FF1E9D524300957995 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B68916071E9D527400957995 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		B68916091E9D529F00957995 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../../../usr/local/Cellar/glfw/3.3/src/Debug/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		B689160B1E9D530300957995 /* libSOIL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSOIL.dylib; path = ../../../../../../../../opt/local/lib/libSOIL.dylib; sourceTree = "<group>"; };
+		B689160D1E9D532300957995 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
+		B689160F1E9D534500957995 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = TerrainProject/Resources; sourceTree = "<group>"; };
+		B68916111E9D575500957995 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		B68916121E9D575500957995 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		B6C291141E9D6CF4007DCA9F /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../../../../../usr/local/Cellar/freetype/2.7.1/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +55,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67297F41E9EFE1500B06A40 /* libassimp.3.3.1.dylib in Frameworks */,
+				B689160E1E9D532300957995 /* libGLEW.2.0.0.dylib in Frameworks */,
+				B689160C1E9D530300957995 /* libSOIL.dylib in Frameworks */,
+				B689160A1E9D529F00957995 /* libglfw.3.3.dylib in Frameworks */,
+				B68916081E9D527400957995 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +69,10 @@
 		B68915F31E9D524300957995 = {
 			isa = PBXGroup;
 			children = (
+				B689160F1E9D534500957995 /* Resources */,
 				B68915FE1E9D524300957995 /* TerrainProject */,
 				B68915FD1E9D524300957995 /* Products */,
+				B68916061E9D527400957995 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +88,27 @@
 			isa = PBXGroup;
 			children = (
 				B68915FF1E9D524300957995 /* main.cpp */,
+				B68916111E9D575500957995 /* Shader.cpp */,
+				B68916121E9D575500957995 /* Shader.hpp */,
+				B67297F01E9EA4B200B06A40 /* SimpleTime.cpp */,
+				B67297F11E9EA4B200B06A40 /* SimpleTime.hpp */,
+				B65B4CCF1EA683DB00740DED /* Texture.cpp */,
+				B65B4CD01EA683DB00740DED /* Texture.hpp */,
 			);
 			path = TerrainProject;
+			sourceTree = "<group>";
+		};
+		B68916061E9D527400957995 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B67297F31E9EFE1500B06A40 /* libassimp.3.3.1.dylib */,
+				B6C291141E9D6CF4007DCA9F /* libfreetype.6.dylib */,
+				B689160D1E9D532300957995 /* libGLEW.2.0.0.dylib */,
+				B689160B1E9D530300957995 /* libSOIL.dylib */,
+				B68916091E9D529F00957995 /* libglfw.3.3.dylib */,
+				B68916071E9D527400957995 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67297F21E9EA4B200B06A40 /* SimpleTime.cpp in Sources */,
+				B65B4CD11EA683DB00740DED /* Texture.cpp in Sources */,
+				B68916131E9D575500957995 /* Shader.cpp in Sources */,
 				B68916001E9D524300957995 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +270,21 @@
 		B68916041E9D524300957995 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/2.0.0/include,
+					/usr/local/Cellar/glfw/3.3/include,
+					/usr/local/Cellar/glm/0.9.8.3/include,
+					/usr/local/Cellar/assimp/3.3.1/include,
+					/usr/local/Cellar/SOIL/src,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.3/src/Debug,
+					/opt/local/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/freetype/2.7.1/lib,
+					/usr/local/Cellar/assimp/3.3.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,6 +292,21 @@
 		B68916051E9D524300957995 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/2.0.0/include,
+					/usr/local/Cellar/glfw/3.3/include,
+					/usr/local/Cellar/glm/0.9.8.3/include,
+					/usr/local/Cellar/assimp/3.3.1/include,
+					/usr/local/Cellar/SOIL/src,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.3/src/Debug,
+					/opt/local/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/freetype/2.7.1/lib,
+					/usr/local/Cellar/assimp/3.3.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -248,6 +330,7 @@
 				B68916051E9D524300957995 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
