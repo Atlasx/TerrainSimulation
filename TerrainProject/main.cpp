@@ -174,8 +174,8 @@ int main(int argc, const char * argv[]) {
     //Set reference texture dimensions
     refTexWidth = 4;
     refTexHeight = 4;
-    virtualGridWidth = 4;
-    virtualGridHeight = 4;
+    virtualGridWidth = 16;
+    virtualGridHeight = 16;
     
     //Reference texture dimensions
     glUniform2i(glGetUniformLocation(defaultShader.Program, "refTexDim"), refTexWidth, refTexHeight);

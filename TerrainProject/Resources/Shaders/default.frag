@@ -14,11 +14,19 @@ uniform sampler2D virtualMap;
 uniform vec2 refTexDim;
 uniform vec2 virtualGridDimensions;
 
-void getVirtualGridUV (in vec2 texCoords, out vec2 virtualTexCoords) {
-    
+//Gets the local texture coordinates from the virtual grid
+void getLocalUV (in vec2 texCoords, out vec2 localTexCoords) {
+    localTexCoords = vec2(
+                            texCoords.x / virtualGridDimensions.x,
+                            texCoords.y / virtualGridDimensions.y
+                            );
 }
 
 void main () {
     float virtID = texture(virtualMap, textureCoord).x;
-    color = texture(texture0, textureCoord)  * texture(texture1, textureCoord);
+    vec2 localUV;
+    getLocalUV (textureCoord, localUV);
+    
+    color = vec4(localUV.x, localUV.y, 1.f, 1.f);
+    //color = texture(texture0, textureCoord) * texture(texture1, textureCoord);
 }
