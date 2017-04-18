@@ -27,6 +27,9 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
+int refTexWidth, refTexHeight;
+int virtualGridWidth, virtualGridHeight;
+
 struct Transform {
     glm::vec3 position;
     glm::vec3 rotation;
@@ -166,6 +169,17 @@ int main(int argc, const char * argv[]) {
     //Load Textures
     Texture wallTex ("Resources/Images/wall.jpg");
     Texture refTex ("Resources/Images/refTexture.png");
+    Texture virtMap ("Resourcse/Images/virtMap.png");
+    
+    //Set reference texture dimensions
+    refTexWidth = 4;
+    refTexHeight = 4;
+    virtualGridWidth = 4;
+    virtualGridHeight = 4;
+    
+    //Reference texture dimensions
+    glUniform2i(glGetUniformLocation(defaultShader.Program, "refTexDim"), refTexWidth, refTexHeight);
+    glUniform2i(glGetUniformLocation(defaultShader.Program, "virtualGridDimensions"), virtualGridWidth, virtualGridHeight);
     
     //Main Loop
     while (!glfwWindowShouldClose(window)) {
@@ -188,6 +202,7 @@ int main(int argc, const char * argv[]) {
         //Draw plane
         wallTex.Use(defaultShader.Program, "texture0", GL_TEXTURE0, 0);
         refTex.Use(defaultShader.Program, "texture1", GL_TEXTURE1, 1);
+        virtMap.Use(defaultShader.Program, "virtualMap", GL_TEXTURE2, 2);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
