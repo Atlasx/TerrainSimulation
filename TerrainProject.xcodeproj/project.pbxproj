@@ -137,6 +137,7 @@
 		B68915F41E9D524300957995 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Connor Douglas";
 				TargetAttributes = {
@@ -152,6 +153,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B68915F31E9D524300957995;
 			productRefGroup = B68915FD1E9D524300957995 /* Products */;

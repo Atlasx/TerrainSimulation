@@ -178,8 +178,12 @@ int main(int argc, const char * argv[]) {
     virtualGridHeight = 16;
     
     //Reference texture dimensions
-    glUniform2i(glGetUniformLocation(defaultShader.Program, "refTexDim"), refTexWidth, refTexHeight);
-    glUniform2i(glGetUniformLocation(defaultShader.Program, "virtualGridDimensions"), virtualGridWidth, virtualGridHeight);
+    glUseProgram(defaultShader.Program);
+    glUniform2f(glGetUniformLocation(defaultShader.Program, "refTexDim"), refTexWidth, refTexHeight);
+    glUniform1f(glGetUniformLocation(defaultShader.Program, "virtualGD_X"), (GLfloat)virtualGridWidth);
+    glUniform1f(glGetUniformLocation(defaultShader.Program, "virtualGD_Y"), (GLfloat)virtualGridHeight);
+    
+    glUniform2f(glGetUniformLocation(defaultShader.Program, "virtualGridDimensions"), (GLfloat)virtualGridWidth, (GLfloat)virtualGridHeight);
     
     //Main Loop
     while (!glfwWindowShouldClose(window)) {
