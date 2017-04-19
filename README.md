@@ -1,11 +1,11 @@
 # Terrain Simulation
 A terrain simulation for cs5610 Interactive Computer Graphics, work in progress.
 
-## Random Rotation
+## Virtual Grid
 
-Based on a sample of perlin noise, rotate the textures from the atlas to create less grid-like textures.
+This is the virtual grid that has a user-specified size. It can be any size and will create a virtual texture several times larger than the input texture.
 
-![Random Rotation](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/randomrotation.png)
+![Virtual Grid](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/virtualgrid.png)
 
 ## Texture Atlas Sampling
 
@@ -13,8 +13,14 @@ Based on a small input image, it will sample the texture atlas. This creates a v
 
 ![Coastline](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/coastline.png)
 
-## Virtual Grid
+## Random Rotation
 
-This is the virtual grid that has a user-specified size. It can be any size and will create a virtual texture several times larger than the input texture.
+Based on a sample of perlin noise, rotate the textures from the atlas to create less grid-like textures.
 
-![Virtual Grid](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/virtualgrid.png)
+![Random Rotation](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/randomrotation.png)
+
+## Larger Virtual Grids
+
+Since the size of the virtual grids is user specified, and the virtual map can be of any size, we will need to smoothly interpolate between areas otherwise the virtual grid will look chunky like this.
+
+![Chunky Virtual Grid](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/largevirtualgrid.png)
