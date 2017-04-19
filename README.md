@@ -1,6 +1,12 @@
 # Terrain Simulation
 A terrain simulation for cs5610 Interactive Computer Graphics, work in progress.
 
+## Random Rotation
+
+Based on a sample of perlin noise, rotate the textures from the atlas to create less grid-like textures.
+
+![Random Rotation](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/randomrotation.png)
+
 ## Texture Atlas Sampling
 
 Based on a small input image, it will sample the texture atlas. This creates a virtual image larger than what could be done with just a single texture.
