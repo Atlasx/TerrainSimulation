@@ -168,7 +168,7 @@ int main(int argc, const char * argv[]) {
     
     //Load Textures
     Texture wallTex ("Resources/Images/wall.jpg", GL_TEXTURE_2D);
-    Texture refTex ("Resources/Images/refTexture.png", GL_TEXTURE_2D);
+    Texture refTex ("Resources/Images/RotationAtlas.png", GL_TEXTURE_2D);
     Texture virtMap ("Resources/Images/IslandTest.png", GL_TEXTURE_2D);
     Texture perlinNoise ("Resources/Images/perlin_noise.png", GL_TEXTURE_2D);
     

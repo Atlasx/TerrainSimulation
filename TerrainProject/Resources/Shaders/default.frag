@@ -15,6 +15,40 @@ uniform vec4 refTextureDimensions;
 uniform vec2 virtualGridDimensions;
 uniform float time;
 
+//Simple perlin noise function to sample a random noise function
+//Returns a value from 0-1
+void perlin (in float x, in float y, out float ret) {
+    ret = texture(perlinNoise, vec2(x, y)).r;
+}
+
+//Returns the current virtual grid coordinate
+void getVirtualGridCoord (out vec2 coord) {
+    float X;
+    float Y;
+    X = floor(textureCoord.x * virtualGridDimensions.x);
+    Y = floor(textureCoord.y * virtualGridDimensions.y);
+    coord = vec2(X, Y);
+}
+
+//Based on perlin noise, randomly flips the localUV to get more random textures
+//It just samples the global virtual grid UV for the perlin value
+void randomUVFlip (inout vec2 UV) {
+    float flipX;
+    float flipY;
+    
+    vec2 vgCoord;
+    getVirtualGridCoord(vgCoord);
+    vgCoord /= virtualGridDimensions.x;
+    
+    perlin(vgCoord.x, vgCoord.y, flipX);
+    perlin(vgCoord.y, vgCoord.x, flipY);
+    
+    flipX = floor(flipX * 2.f);
+    flipY = floor(flipY * 2.f);
+    UV.x = (flipX * UV.x) + ((1-flipX) * (1-UV.x));
+    UV.y = (flipY * UV.y) + ((1-flipY) * (1-UV.y));
+}
+
 //Gets the local texture coordinates from the virtual grid
 void getLocalUV (in vec2 texCoords, out vec2 localTexCoords) {
     float texX = texCoords.x;
@@ -49,12 +83,6 @@ void getColorFromAtlas (in vec2 UV, in int patternID, out vec4 color) {
     color = texture(textureAtlas, atlasUV);
 }
 
-//Simple perlin noise function to sample a random noise function
-//Returns a value from 0-1
-void perlin (in float x, in float y, out float ret) {
-    ret = texture(perlinNoise, vec2(x, y)).r;
-}
-
 void main () {
     //Get localUV from virtual grid
     vec2 localUV;
@@ -64,6 +92,15 @@ void main () {
     int patternID;
     getPatternID (textureCoord, patternID);
     
+    //Randomly flip the UV
+    randomUVFlip(localUV);
+    
     //Get the corresponding color from the atlas
     getColorFromAtlas(localUV, patternID, color);
+    /*
+    vec2 vgrid;
+    getVirtualGridCoord(vgrid);
+    vgrid /= 16.f;
+    color = vec4(vgrid, 0.f, 1.f);
+     */
 }
