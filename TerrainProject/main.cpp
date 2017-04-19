@@ -177,8 +177,8 @@ int main(int argc, const char * argv[]) {
     refTexY = 4;
     refTexWidth = 16;
     refTexHeight = 16;
-    virtualGridWidth = 16;
-    virtualGridHeight = 16;
+    virtualGridWidth = 64;
+    virtualGridHeight = 64;
     
     //Reference texture dimensions
     glUseProgram(defaultShader.Program);
