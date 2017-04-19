@@ -27,7 +27,7 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
-int refTexWidth, refTexHeight;
+int refTexX, refTexY, refTexWidth, refTexHeight;
 int virtualGridWidth, virtualGridHeight;
 
 struct Transform {
@@ -167,23 +167,25 @@ int main(int argc, const char * argv[]) {
     }
     
     //Load Textures
-    Texture wallTex ("Resources/Images/wall.jpg");
-    Texture refTex ("Resources/Images/refTexture.png");
-    Texture virtMap ("Resourcse/Images/virtMap.png");
+    Texture wallTex ("Resources/Images/wall.jpg", GL_TEXTURE_2D);
+    Texture refTex ("Resources/Images/refTexture.png", GL_TEXTURE_2D);
+    Texture virtMap ("Resources/Images/IslandTest.png", GL_TEXTURE_2D);
     
     //Set reference texture dimensions
-    refTexWidth = 4;
-    refTexHeight = 4;
+    refTexX = 4;
+    refTexY = 4;
+    refTexWidth = 16;
+    refTexHeight = 16;
     virtualGridWidth = 16;
     virtualGridHeight = 16;
     
     //Reference texture dimensions
     glUseProgram(defaultShader.Program);
-    glUniform2f(glGetUniformLocation(defaultShader.Program, "refTexDim"), refTexWidth, refTexHeight);
-    glUniform1f(glGetUniformLocation(defaultShader.Program, "virtualGD_X"), (GLfloat)virtualGridWidth);
-    glUniform1f(glGetUniformLocation(defaultShader.Program, "virtualGD_Y"), (GLfloat)virtualGridHeight);
-    
+    glUniform4f(glGetUniformLocation(defaultShader.Program, "refTextureDimensions"), (GLfloat)refTexX, (GLfloat)refTexY, (GLfloat)refTexWidth, (GLfloat)refTexHeight);
     glUniform2f(glGetUniformLocation(defaultShader.Program, "virtualGridDimensions"), (GLfloat)virtualGridWidth, (GLfloat)virtualGridHeight);
+    
+    refTex.Use(defaultShader.Program, "textureAtlas", GL_TEXTURE0, 0, GL_TEXTURE_2D);
+    virtMap.Use(defaultShader.Program, "virtualMap", GL_TEXTURE1, 1, GL_TEXTURE_2D);
     
     //Main Loop
     while (!glfwWindowShouldClose(window)) {
@@ -197,16 +199,13 @@ int main(int argc, const char * argv[]) {
         //Clear Buffers
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        //Time uniform
-        glUniform1f(timeID, (GLfloat)glfwGetTime());
-        
         //Use default shader
         defaultShader.Use();
         
+        //Time uniform
+        glUniform1f(timeID, (GLfloat)glfwGetTime());
+        
         //Draw plane
-        wallTex.Use(defaultShader.Program, "texture0", GL_TEXTURE0, 0);
-        refTex.Use(defaultShader.Program, "texture1", GL_TEXTURE1, 1);
-        virtMap.Use(defaultShader.Program, "virtualMap", GL_TEXTURE2, 2);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);

@@ -18,9 +18,9 @@ class Texture
 {
 public:
     GLuint id;
-    Texture (const GLchar* path);
+    Texture (const GLchar* path, GLuint texture_type);
     void Use();
-    void Use(GLuint program, GLchar* uniform, GLuint textureSlot, int slot);
+    void Use(GLuint program, GLchar* uniform, GLuint textureSlot, int slot, GLuint texture_type);
 };
 
 #endif /* Texture_hpp */
