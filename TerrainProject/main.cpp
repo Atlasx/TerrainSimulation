@@ -170,6 +170,7 @@ int main(int argc, const char * argv[]) {
     Texture wallTex ("Resources/Images/wall.jpg", GL_TEXTURE_2D);
     Texture refTex ("Resources/Images/refTexture.png", GL_TEXTURE_2D);
     Texture virtMap ("Resources/Images/IslandTest.png", GL_TEXTURE_2D);
+    Texture perlinNoise ("Resources/Images/perlin_noise.png", GL_TEXTURE_2D);
     
     //Set reference texture dimensions
     refTexX = 4;
@@ -186,6 +187,7 @@ int main(int argc, const char * argv[]) {
     
     refTex.Use(defaultShader.Program, "textureAtlas", GL_TEXTURE0, 0, GL_TEXTURE_2D);
     virtMap.Use(defaultShader.Program, "virtualMap", GL_TEXTURE1, 1, GL_TEXTURE_2D);
+    perlinNoise.Use(defaultShader.Program, "perlinNoise", GL_TEXTURE2, 2, GL_TEXTURE_2D);
     
     //Main Loop
     while (!glfwWindowShouldClose(window)) {

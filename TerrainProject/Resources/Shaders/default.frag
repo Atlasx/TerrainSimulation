@@ -8,6 +8,7 @@ out vec4 color;
 //Textures
 uniform sampler2D virtualMap;
 uniform sampler2D textureAtlas;
+uniform sampler2D perlinNoise;
 
 //Other uniforms
 uniform vec4 refTextureDimensions;
@@ -48,8 +49,10 @@ void getColorFromAtlas (in vec2 UV, in int patternID, out vec4 color) {
     color = texture(textureAtlas, atlasUV);
 }
 
-void perlinNoise () {
-    
+//Simple perlin noise function to sample a random noise function
+//Returns a value from 0-1
+void perlin (in float x, in float y, out float ret) {
+    ret = texture(perlinNoise, vec2(x, y)).r;
 }
 
 void main () {
