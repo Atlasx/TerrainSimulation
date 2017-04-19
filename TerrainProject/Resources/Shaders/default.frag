@@ -36,6 +36,7 @@ void randomUVFlip (inout vec2 UV) {
     float flipX;
     float flipY;
     
+    //First Octave
     vec2 vgCoord;
     getVirtualGridCoord(vgCoord);
     vgCoord /= virtualGridDimensions.x;
@@ -43,6 +44,18 @@ void randomUVFlip (inout vec2 UV) {
     perlin(vgCoord.x, vgCoord.y, flipX);
     perlin(vgCoord.y, vgCoord.x, flipY);
     
+    //Second Octave
+    vgCoord *= 8.f;
+    
+    float flipX_o2;
+    float flipY_o2;
+    perlin(vgCoord.x, vgCoord.y, flipX_o2);
+    perlin(vgCoord.y, vgCoord.x, flipY_o2);
+    
+    flipX = (flipX + flipX_o2) / 2.f;
+    flipY = (flipY + flipY_o2) / 2.f;
+    
+    //Apply flip to UV
     flipX = floor(flipX * 2.f);
     flipY = floor(flipY * 2.f);
     UV.x = (flipX * UV.x) + ((1-flipX) * (1-UV.x));

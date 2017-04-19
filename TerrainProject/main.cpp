@@ -27,8 +27,8 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
-int refTexX, refTexY, refTexWidth, refTexHeight;
-int virtualGridWidth, virtualGridHeight;
+int refTexX = 4, refTexY = 4, refTexWidth = 16, refTexHeight = 16;
+int virtualGridWidth = 64, virtualGridHeight = 64;
 
 struct Transform {
     glm::vec3 position;
@@ -40,7 +40,7 @@ struct Transform {
 SimpleTime g_time;
 
 int main(int argc, const char * argv[]) {
- 
+    
     //Initialize GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -171,14 +171,6 @@ int main(int argc, const char * argv[]) {
     Texture refTex ("Resources/Images/RotationAtlas.png", GL_TEXTURE_2D);
     Texture virtMap ("Resources/Images/IslandTest.png", GL_TEXTURE_2D);
     Texture perlinNoise ("Resources/Images/perlin_noise.png", GL_TEXTURE_2D);
-    
-    //Set reference texture dimensions
-    refTexX = 4;
-    refTexY = 4;
-    refTexWidth = 16;
-    refTexHeight = 16;
-    virtualGridWidth = 64;
-    virtualGridHeight = 64;
     
     //Reference texture dimensions
     glUseProgram(defaultShader.Program);
