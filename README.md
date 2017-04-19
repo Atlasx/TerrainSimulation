@@ -24,3 +24,9 @@ Based on a sample of perlin noise, rotate the textures from the atlas to create 
 Since the size of the virtual grids is user specified, and the virtual map can be of any size, we will need to smoothly interpolate between areas otherwise the virtual grid will look chunky like this.
 
 ![Chunky Virtual Grid](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/largevirtualgrid.png)
+
+## Octaves in Perlin Noise
+
+Now you may have noticed the random rotation in the Chunky Virtual Grid wasn't very random. It was actually sampled from perlin noise overlapping the whole vritual grid space. To not make so obvious we can include multiple octaves of perlin noise to change the rotation more in some areas, and less in others.
+
+![Random Noise](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/randomoctaves.png)
