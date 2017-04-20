@@ -51,3 +51,9 @@ Turns out dithering is pretty hard.
 This could possibly be used for a terrain chunk underneath some colored trees.
 
 ![Colored Leaves](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/leafpattern.png)
+
+## Example Beach
+
+Another possible use.
+
+![Beach Example](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/beachexample.png)
