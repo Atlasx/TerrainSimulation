@@ -39,3 +39,9 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 ```
 
 ![Sampled Noise](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/perlinOctave.png)
+
+## Dithering Bugs
+
+Turns out dither is pretty hard.
+
+![Dithering Bugs](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/bugs1.png)
