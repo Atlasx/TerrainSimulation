@@ -137,7 +137,7 @@ void getDitheredPatternID (in vec2 UV, out int ID) {
     vec2 leftCoords;
     leftCoords = virtMapCoords;
     leftCoords.x -= 1.f;
-    leftCoords.x = mod(leftCoords.x, virtualMapDimensions.x);
+    //leftCoords.x = mod(leftCoords.x, virtualMapDimensions.x);
     
     int leftID;
     getVirtMapPatternID(leftCoords, leftID);
@@ -146,7 +146,7 @@ void getDitheredPatternID (in vec2 UV, out int ID) {
     vec2 rightCoords;
     rightCoords = virtMapCoords;
     rightCoords.x += 1.f;
-    rightCoords.x = mod(rightCoords.x, virtualMapDimensions.x);
+    //rightCoords.x = mod(rightCoords.x, virtualMapDimensions.x);
     
     int rightID;
     getVirtMapPatternID(rightCoords, rightID);
@@ -155,7 +155,7 @@ void getDitheredPatternID (in vec2 UV, out int ID) {
     vec2 upCoords;
     upCoords = virtMapCoords;
     upCoords.y += 1.f;
-    upCoords.y = mod(upCoords.y, virtualMapDimensions.y);
+    //upCoords.y = mod(upCoords.y, virtualMapDimensions.y);
     
     int upID;
     getVirtMapPatternID(upCoords, upID);
@@ -164,23 +164,35 @@ void getDitheredPatternID (in vec2 UV, out int ID) {
     vec2 downCoords;
     downCoords = virtMapCoords;
     downCoords.y -= 1.f;
-    downCoords.y = mod(downCoords.y, virtualMapDimensions.y);
+    //downCoords.y = mod(downCoords.y, virtualMapDimensions.y);
     
     int downID;
     getVirtMapPatternID(downCoords, downID);
-    
-    //Compare IDs and lerp between different IDs
-    vec4 ids;
-    ids.x = leftID;
-    ids.y = rightID;
-    ids.z = upID;
-    ids.w = downID;
     
     //Each ID has the same probability
     float r;
     rand(virtGridCoords, r);
     r = floor(abs(r)*2.f);
-    ID = int(floor(r)) * centerID + int(floor(1-r))*leftID;
+    int lID;
+    int rID;
+    int uID;
+    int dID;
+    lID = int(floor(r)) * centerID + int(floor(1-r))*leftID;
+    rID = int(floor(r)) * centerID + int(floor(1-r))*rightID;
+    uID = int(floor(r)) * centerID + int(floor(1-r))*upID;
+    dID = int(floor(r)) * centerID + int(floor(1-r))*downID;
+    float r2;
+    rand(virtMapCoords, r2);
+    r2 = floor(abs(r2)*4.f);
+    if (r2 > 3.f) {
+        ID = lID;
+    } else if (r2 > 2.f) {
+        ID = rID;
+    } else if (r2 > 1.f) {
+        ID = uID;
+    } else {
+        ID = dID;
+    }
 }
 
 void main () {
@@ -191,7 +203,7 @@ void main () {
     //Get the pattern from the virtual map
     int patternID;
     getPatternID (textureCoord, patternID);
-    getDitheredPatternID(textureCoord, patternID);
+    //getDitheredPatternID(textureCoord, patternID);
     
     //Randomly flip the UV
     randomUVFlip(localUV);
