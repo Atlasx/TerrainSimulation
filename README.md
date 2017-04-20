@@ -30,3 +30,12 @@ Since the size of the virtual grids is user specified, and the virtual map can b
 Now you may have noticed the random rotation in the Chunky Virtual Grid wasn't very random. It was actually sampled from perlin noise overlapping the whole vritual grid space. To not make so obvious we can include multiple octaves of perlin noise to change the rotation more in some areas, and less in others.
 
 ![Random Noise](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/randomoctaves.png)
+
+Since I am not calculating perlin noise from a function and just sampling from a texture, there are some repeating patterns caused by my texture settings.
+
+```
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+```
+
+![Sampled Noise](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/perlinOctave.png)
