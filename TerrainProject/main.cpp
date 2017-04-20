@@ -27,7 +27,7 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
-int refTexX = 4, refTexY = 4, refTexWidth = 33, refTexHeight = 33;
+int refTexX = 2, refTexY = 2, refTexWidth = 16, refTexHeight = 16;
 int virtualGridWidth = 64, virtualGridHeight = 64;
 int virtMapWidth = 64, virtMapHeight = 64;
 
@@ -169,8 +169,8 @@ int main(int argc, const char * argv[]) {
     
     //Load Textures
     Texture wallTex ("Resources/Images/wall.jpg", GL_TEXTURE_2D);
-    Texture refTex ("Resources/Images/leafAtlas.png", GL_TEXTURE_2D);
-    Texture virtMap ("Resources/Images/leafMap.png", GL_TEXTURE_2D);
+    Texture refTex ("Resources/Images/beach.png", GL_TEXTURE_2D);
+    Texture virtMap ("Resources/Images/beachMap.png", GL_TEXTURE_2D);
     Texture perlinNoise ("Resources/Images/perlin_noise.png", GL_TEXTURE_2D);
     
     //Reference texture dimensions
