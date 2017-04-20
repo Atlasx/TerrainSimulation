@@ -1,5 +1,8 @@
 # Terrain Simulation
-A terrain simulation for cs5610 Interactive Computer Graphics, work in progress.
+A terrain texture simulation for cs5610 Interactive Computer Graphics.
+
+Based off of "Pattern based procedural textures" by Sylvain Lefebvre and Fabrice Neyret.
+http://dl.acm.org/citation.cfm?doid=641480.641518
 
 ## Virtual Grid
 
