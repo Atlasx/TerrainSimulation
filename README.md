@@ -1,5 +1,5 @@
 # Virtual Terrain Texture
-A virtual terrain textuer for cs5610 Interactive Computer Graphics.
+A virtual terrain texture for cs5610 Interactive Computer Graphics.
 
 Based off of "Pattern based procedural textures" by Sylvain Lefebvre and Fabrice Neyret.
 http://dl.acm.org/citation.cfm?doid=641480.641518
