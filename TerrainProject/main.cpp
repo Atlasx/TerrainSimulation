@@ -28,7 +28,8 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
 int refTexX = 4, refTexY = 4, refTexWidth = 16, refTexHeight = 16;
-int virtualGridWidth = 32, virtualGridHeight = 32;
+int virtualGridWidth = 128, virtualGridHeight = 128;
+int virtMapWidth = 16, virtMapHeight = 16;
 
 struct Transform {
     glm::vec3 position;
@@ -175,6 +176,7 @@ int main(int argc, const char * argv[]) {
     //Reference texture dimensions
     glUseProgram(defaultShader.Program);
     glUniform4f(glGetUniformLocation(defaultShader.Program, "refTextureDimensions"), (GLfloat)refTexX, (GLfloat)refTexY, (GLfloat)refTexWidth, (GLfloat)refTexHeight);
+    glUniform2f(glGetUniformLocation(defaultShader.Program, "virtualMapDimensions"), (GLfloat)virtMapWidth, (GLfloat)virtMapHeight);
     glUniform2f(glGetUniformLocation(defaultShader.Program, "virtualGridDimensions"), (GLfloat)virtualGridWidth, (GLfloat)virtualGridHeight);
     
     refTex.Use(defaultShader.Program, "textureAtlas", GL_TEXTURE0, 0, GL_TEXTURE_2D);

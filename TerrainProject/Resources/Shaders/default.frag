@@ -12,6 +12,7 @@ uniform sampler2D perlinNoise;
 
 //Other uniforms
 uniform vec4 refTextureDimensions;
+uniform vec2 virtualMapDimensions;
 uniform vec2 virtualGridDimensions;
 uniform float time;
 
@@ -80,10 +81,27 @@ void getLocalUV (in vec2 texCoords, out vec2 localTexCoords) {
     localTexCoords = vec2(texX, texY);
 }
 
-//Gets a pattern's ID from the virtual map
+//Gets a pattern's ID from the virtual map using UV coordinates
 void getPatternID(in vec2 coords, out int ID) {
     //Pattern ID is taken from the R component of the virtual map
     ID = int(texture(virtualMap, coords).r * 255.f);
+}
+
+//Gets a pattern ID from virtual map coordinates
+void getVirtMapPatternID(in vec2 coords, out int ID) {
+    coords.x /= virtualMapDimensions.x;
+    coords.y /= virtualMapDimensions.y;
+    
+    ID = int(texture(virtualMap, coords).r * 255.f);
+}
+
+//Gets the current virtual map coordinates
+void getVirtualMapCoords (in vec2 virtualGridUV, out vec2 coords) {
+    float X;
+    float Y;
+    X = floor(virtualGridUV.x * virtualMapDimensions.x);
+    Y = floor(virtualGridUV.y * virtualMapDimensions.y);
+    coords = vec2(X, Y);
 }
 
 //Samples the atlas with UV at pattern with ID patternID
@@ -104,7 +122,65 @@ void getColorFromAtlas (in vec2 UV, in int patternID, out vec4 color) {
 
 //Dithers the reference texture
 void getDitheredPatternID (in vec2 UV, out int ID) {
+    //Sample nearby virtual MAP spaces and see if there is any change happening.
     
+    vec2 virtMapCoords;
+    getVirtualMapCoords (UV, virtMapCoords);
+    
+    vec2 virtGridCoords;
+    getVirtualGridCoord(virtGridCoords);
+    
+    int centerID;
+    getVirtMapPatternID(virtMapCoords, centerID);
+    
+    //Left
+    vec2 leftCoords;
+    leftCoords = virtMapCoords;
+    leftCoords.x -= 1.f;
+    leftCoords.x = mod(leftCoords.x, virtualMapDimensions.x);
+    
+    int leftID;
+    getVirtMapPatternID(leftCoords, leftID);
+    
+    //Right
+    vec2 rightCoords;
+    rightCoords = virtMapCoords;
+    rightCoords.x += 1.f;
+    rightCoords.x = mod(rightCoords.x, virtualMapDimensions.x);
+    
+    int rightID;
+    getVirtMapPatternID(rightCoords, rightID);
+    
+    //Up
+    vec2 upCoords;
+    upCoords = virtMapCoords;
+    upCoords.y += 1.f;
+    upCoords.y = mod(upCoords.y, virtualMapDimensions.y);
+    
+    int upID;
+    getVirtMapPatternID(upCoords, upID);
+    
+    //Down
+    vec2 downCoords;
+    downCoords = virtMapCoords;
+    downCoords.y -= 1.f;
+    downCoords.y = mod(downCoords.y, virtualMapDimensions.y);
+    
+    int downID;
+    getVirtMapPatternID(downCoords, downID);
+    
+    //Compare IDs and lerp between different IDs
+    vec4 ids;
+    ids.x = leftID;
+    ids.y = rightID;
+    ids.z = upID;
+    ids.w = downID;
+    
+    //Each ID has the same probability
+    float r;
+    rand(virtGridCoords, r);
+    r = floor(abs(r)*2.f);
+    ID = int(floor(r)) * centerID + int(floor(1-r))*leftID;
 }
 
 void main () {
@@ -115,6 +191,7 @@ void main () {
     //Get the pattern from the virtual map
     int patternID;
     getPatternID (textureCoord, patternID);
+    getDitheredPatternID(textureCoord, patternID);
     
     //Randomly flip the UV
     randomUVFlip(localUV);
