@@ -21,6 +21,12 @@ void perlin (in float x, in float y, out float ret) {
     ret = texture(perlinNoise, vec2(x, y)).r;
 }
 
+//A random number generator, taken from the web
+//https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83
+void rand(in vec2 co, out float ret){
+    ret = fract(sin(dot(co.xy, vec2(12.9898,78.233))) * 43758.5453);
+}
+
 //Returns the current virtual grid coordinate
 void getVirtualGridCoord (out vec2 coord) {
     float X;
@@ -96,6 +102,11 @@ void getColorFromAtlas (in vec2 UV, in int patternID, out vec4 color) {
     color = texture(textureAtlas, atlasUV);
 }
 
+//Dithers the reference texture
+void getDitheredPatternID (in vec2 UV, out int ID) {
+    
+}
+
 void main () {
     //Get localUV from virtual grid
     vec2 localUV;
@@ -110,10 +121,4 @@ void main () {
     
     //Get the corresponding color from the atlas
     getColorFromAtlas(localUV, patternID, color);
-    /*
-    vec2 vgrid;
-    getVirtualGridCoord(vgrid);
-    vgrid /= 16.f;
-    color = vec4(vgrid, 0.f, 1.f);
-     */
 }

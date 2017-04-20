@@ -28,7 +28,7 @@ void CursorCallback(GLFWwindow *window, double xpos, double ypos);
 int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
 int refTexX = 4, refTexY = 4, refTexWidth = 16, refTexHeight = 16;
-int virtualGridWidth = 64, virtualGridHeight = 64;
+int virtualGridWidth = 32, virtualGridHeight = 32;
 
 struct Transform {
     glm::vec3 position;
