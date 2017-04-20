@@ -42,6 +42,12 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 
 ## Dithering Bugs
 
-Turns out dither is pretty hard.
+Turns out dithering is pretty hard.
 
 ![Dithering Bugs](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/bugs1.png)
+
+## Example Leaf Pattern
+
+This could possibly be used for a terrain chunk underneath some colored trees.
+
+![Colored Leaves](https://raw.githubusercontent.com/Atlasx/TerrainSimulation/master/ProgressImages/leafpattern.png)
